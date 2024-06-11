@@ -21,6 +21,8 @@
 		3A9874632C169F96006D5B37 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3A9874622C169F96006D5B37 /* FirebaseStorage */; };
 		3A9874652C18A2F6006D5B37 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9874642C18A2F6006D5B37 /* MapViewController.swift */; };
 		3AAF65962C18AEE6006BEFA0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF65952C18AEE6006BEFA0 /* SearchViewController.swift */; };
+		3AAF65982C18CA44006BEFA0 /* TourApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF65972C18CA44006BEFA0 /* TourApiManager.swift */; };
+		3AAF65A02C18D20E006BEFA0 /* TouristSpotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF659F2C18D20E006BEFA0 /* TouristSpotTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		3A9874522C1699F3006D5B37 /* NMapsMap.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NMapsMap.xcframework; path = Pods/NMapsMap/framework/NMapsMap.xcframework; sourceTree = "<group>"; };
 		3A9874642C18A2F6006D5B37 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3AAF65952C18AEE6006BEFA0 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		3AAF65972C18CA44006BEFA0 /* TourApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourApiManager.swift; sourceTree = "<group>"; };
+		3AAF659F2C18D20E006BEFA0 /* TouristSpotTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristSpotTableViewCell.swift; sourceTree = "<group>"; };
 		CCD1C7E791D730A67F72E065 /* Pods-tourCheck-1971322-jangsubin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tourCheck-1971322-jangsubin.debug.xcconfig"; path = "Target Support Files/Pods-tourCheck-1971322-jangsubin/Pods-tourCheck-1971322-jangsubin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +94,8 @@
 				3A9874482C1692BE006D5B37 /* GoogleService-Info.plist */,
 				3A9874642C18A2F6006D5B37 /* MapViewController.swift */,
 				3AAF65952C18AEE6006BEFA0 /* SearchViewController.swift */,
+				3AAF65972C18CA44006BEFA0 /* TourApiManager.swift */,
+				3AAF659F2C18D20E006BEFA0 /* TouristSpotTableViewCell.swift */,
 			);
 			path = "tourCheck-1971322-jangsubin";
 			sourceTree = "<group>";
@@ -241,8 +247,10 @@
 				3A9874472C169143006D5B37 /* AuthViewController.swift in Sources */,
 				3A98742F2C168114006D5B37 /* ViewController.swift in Sources */,
 				3A98742B2C168114006D5B37 /* AppDelegate.swift in Sources */,
+				3AAF65A02C18D20E006BEFA0 /* TouristSpotTableViewCell.swift in Sources */,
 				3A9874652C18A2F6006D5B37 /* MapViewController.swift in Sources */,
 				3A98742D2C168114006D5B37 /* SceneDelegate.swift in Sources */,
+				3AAF65982C18CA44006BEFA0 /* TourApiManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +405,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "tourCheck-1971322-jangsubin/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -425,6 +436,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "tourCheck-1971322-jangsubin/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
