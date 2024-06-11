@@ -9,7 +9,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
@@ -22,7 +21,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TouristSpotCell", for: indexPath) as! TouristSpotTableViewCell
         let spot = touristSpots[indexPath.row]
-        
         cell.titleLabel.text = spot.title
         cell.addressLabel.text = spot.addr1
         if let imageUrl = spot.firstimage, let url = URL(string: imageUrl) {
@@ -34,14 +32,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }.resume()
         } else {
-            cell.spotImageView.image = UIImage(named: "placeholder")
+            cell.spotImageView.image = nil  // 이미지가 없을 경우 이미지를 설정하지 않음
         }
-
         return cell
     }
 
     func fetchSpots(keyword: String) {
-        TourAPIManager.shared.fetchTouristSpots(keyword: keyword) { spots in
+        TourAPIManager.shared.fetchTouristSpots(keyword: keyword) { [weak self] spots in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 self.touristSpots = spots ?? []
                 self.tableView.reloadData()
@@ -55,5 +53,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         searchBar.resignFirstResponder()
     }
-}
 
+
+}
