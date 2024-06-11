@@ -7,15 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		151BF4AF70F87BCA5F01894F /* libPods-tourCheck-1971322-jangsubin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5B9BDAC2C11428A8DD12B5 /* libPods-tourCheck-1971322-jangsubin.a */; };
 		3A98742B2C168114006D5B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A98742A2C168114006D5B37 /* AppDelegate.swift */; };
 		3A98742D2C168114006D5B37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A98742C2C168114006D5B37 /* SceneDelegate.swift */; };
 		3A98742F2C168114006D5B37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A98742E2C168114006D5B37 /* ViewController.swift */; };
 		3A9874322C168114006D5B37 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3A9874312C168114006D5B37 /* Base */; };
 		3A9874342C168114006D5B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A9874332C168114006D5B37 /* Assets.xcassets */; };
 		3A9874372C168114006D5B37 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3A9874362C168114006D5B37 /* Base */; };
+		3A9874472C169143006D5B37 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9874462C169143006D5B37 /* AuthViewController.swift */; };
+		3A9874492C1692BE006D5B37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A9874482C1692BE006D5B37 /* GoogleService-Info.plist */; };
+		3A98745F2C169F96006D5B37 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3A98745E2C169F96006D5B37 /* FirebaseAuth */; };
+		3A9874612C169F96006D5B37 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3A9874602C169F96006D5B37 /* FirebaseFirestore */; };
+		3A9874632C169F96006D5B37 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3A9874622C169F96006D5B37 /* FirebaseStorage */; };
+		3A9874652C18A2F6006D5B37 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9874642C18A2F6006D5B37 /* MapViewController.swift */; };
+		3AAF65962C18AEE6006BEFA0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF65952C18AEE6006BEFA0 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		187654A2BD61B69263F6F4D9 /* Pods-tourCheck-1971322-jangsubin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tourCheck-1971322-jangsubin.release.xcconfig"; path = "Target Support Files/Pods-tourCheck-1971322-jangsubin/Pods-tourCheck-1971322-jangsubin.release.xcconfig"; sourceTree = "<group>"; };
+		1A5B9BDAC2C11428A8DD12B5 /* libPods-tourCheck-1971322-jangsubin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tourCheck-1971322-jangsubin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9874272C168114006D5B37 /* tourCheck-1971322-jangsubin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tourCheck-1971322-jangsubin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A98742A2C168114006D5B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A98742C2C168114006D5B37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +34,13 @@
 		3A9874332C168114006D5B37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A9874362C168114006D5B37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A9874382C168114006D5B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A9874462C169143006D5B37 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		3A9874482C1692BE006D5B37 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A9874512C1699F3006D5B37 /* NMapsGeometry.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NMapsGeometry.xcframework; path = Pods/NMapsGeometry/framework/NMapsGeometry.xcframework; sourceTree = "<group>"; };
+		3A9874522C1699F3006D5B37 /* NMapsMap.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NMapsMap.xcframework; path = Pods/NMapsMap/framework/NMapsMap.xcframework; sourceTree = "<group>"; };
+		3A9874642C18A2F6006D5B37 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3AAF65952C18AEE6006BEFA0 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CCD1C7E791D730A67F72E065 /* Pods-tourCheck-1971322-jangsubin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tourCheck-1971322-jangsubin.debug.xcconfig"; path = "Target Support Files/Pods-tourCheck-1971322-jangsubin/Pods-tourCheck-1971322-jangsubin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +48,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				151BF4AF70F87BCA5F01894F /* libPods-tourCheck-1971322-jangsubin.a in Frameworks */,
+				3A9874632C169F96006D5B37 /* FirebaseStorage in Frameworks */,
+				3A98745F2C169F96006D5B37 /* FirebaseAuth in Frameworks */,
+				3A9874612C169F96006D5B37 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +63,8 @@
 			children = (
 				3A9874292C168114006D5B37 /* tourCheck-1971322-jangsubin */,
 				3A9874282C168114006D5B37 /* Products */,
+				3A98743F2C168FE9006D5B37 /* Frameworks */,
+				BD0EF55393434930108EA16C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +86,31 @@
 				3A9874332C168114006D5B37 /* Assets.xcassets */,
 				3A9874352C168114006D5B37 /* LaunchScreen.storyboard */,
 				3A9874382C168114006D5B37 /* Info.plist */,
+				3A9874462C169143006D5B37 /* AuthViewController.swift */,
+				3A9874482C1692BE006D5B37 /* GoogleService-Info.plist */,
+				3A9874642C18A2F6006D5B37 /* MapViewController.swift */,
+				3AAF65952C18AEE6006BEFA0 /* SearchViewController.swift */,
 			);
 			path = "tourCheck-1971322-jangsubin";
+			sourceTree = "<group>";
+		};
+		3A98743F2C168FE9006D5B37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A9874512C1699F3006D5B37 /* NMapsGeometry.xcframework */,
+				3A9874522C1699F3006D5B37 /* NMapsMap.xcframework */,
+				1A5B9BDAC2C11428A8DD12B5 /* libPods-tourCheck-1971322-jangsubin.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD0EF55393434930108EA16C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CCD1C7E791D730A67F72E065 /* Pods-tourCheck-1971322-jangsubin.debug.xcconfig */,
+				187654A2BD61B69263F6F4D9 /* Pods-tourCheck-1971322-jangsubin.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,15 +120,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A98743B2C168114006D5B37 /* Build configuration list for PBXNativeTarget "tourCheck-1971322-jangsubin" */;
 			buildPhases = (
+				EA5727E14270170FB2EFE4D0 /* [CP] Check Pods Manifest.lock */,
 				3A9874232C168113006D5B37 /* Sources */,
 				3A9874242C168113006D5B37 /* Frameworks */,
 				3A9874252C168113006D5B37 /* Resources */,
+				CB2275227065F9E9664A60C4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "tourCheck-1971322-jangsubin";
+			packageProductDependencies = (
+				3A98745E2C169F96006D5B37 /* FirebaseAuth */,
+				3A9874602C169F96006D5B37 /* FirebaseFirestore */,
+				3A9874622C169F96006D5B37 /* FirebaseStorage */,
+			);
 			productName = "tourCheck-1971322-jangsubin";
 			productReference = 3A9874272C168114006D5B37 /* tourCheck-1971322-jangsubin.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +164,9 @@
 				Base,
 			);
 			mainGroup = 3A98741E2C168113006D5B37;
+			packageReferences = (
+				3A98745D2C169F82006D5B37 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 3A9874282C168114006D5B37 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A9874342C168114006D5B37 /* Assets.xcassets in Resources */,
+				3A9874492C1692BE006D5B37 /* GoogleService-Info.plist in Resources */,
 				3A9874372C168114006D5B37 /* Base in Resources */,
 				3A9874322C168114006D5B37 /* Base in Resources */,
 			);
@@ -133,13 +190,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CB2275227065F9E9664A60C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tourCheck-1971322-jangsubin/Pods-tourCheck-1971322-jangsubin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tourCheck-1971322-jangsubin/Pods-tourCheck-1971322-jangsubin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tourCheck-1971322-jangsubin/Pods-tourCheck-1971322-jangsubin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA5727E14270170FB2EFE4D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tourCheck-1971322-jangsubin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3A9874232C168113006D5B37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AAF65962C18AEE6006BEFA0 /* SearchViewController.swift in Sources */,
+				3A9874472C169143006D5B37 /* AuthViewController.swift in Sources */,
 				3A98742F2C168114006D5B37 /* ViewController.swift in Sources */,
 				3A98742B2C168114006D5B37 /* AppDelegate.swift in Sources */,
+				3A9874652C18A2F6006D5B37 /* MapViewController.swift in Sources */,
 				3A98742D2C168114006D5B37 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,7 +305,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -266,7 +368,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -287,6 +389,7 @@
 		};
 		3A98743C2C168114006D5B37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCD1C7E791D730A67F72E065 /* Pods-tourCheck-1971322-jangsubin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -314,6 +417,7 @@
 		};
 		3A98743D2C168114006D5B37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 187654A2BD61B69263F6F4D9 /* Pods-tourCheck-1971322-jangsubin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -361,6 +465,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3A98745D2C169F82006D5B37 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.27.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3A98745E2C169F96006D5B37 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A98745D2C169F82006D5B37 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		3A9874602C169F96006D5B37 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A98745D2C169F82006D5B37 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		3A9874622C169F96006D5B37 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A98745D2C169F82006D5B37 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3A98741F2C168113006D5B37 /* Project object */;
 }

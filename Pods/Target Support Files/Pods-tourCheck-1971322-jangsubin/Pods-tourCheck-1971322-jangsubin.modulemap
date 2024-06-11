@@ -1,0 +1,6 @@
+framework module Pods_tourCheck_1971322_jangsubin {
+  umbrella header "Pods-tourCheck-1971322-jangsubin-umbrella.h"
+
+  export *
+  module * { export * }
+}
