@@ -23,6 +23,8 @@
 		3AAF65962C18AEE6006BEFA0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF65952C18AEE6006BEFA0 /* SearchViewController.swift */; };
 		3AAF65982C18CA44006BEFA0 /* TourApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF65972C18CA44006BEFA0 /* TourApiManager.swift */; };
 		3AAF65A02C18D20E006BEFA0 /* TouristSpotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF659F2C18D20E006BEFA0 /* TouristSpotTableViewCell.swift */; };
+		3AAF65A22C1BE3D8006BEFA0 /* TouristSpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF65A12C1BE3D8006BEFA0 /* TouristSpotDetailViewController.swift */; };
+		3AAF65A42C1BFE22006BEFA0 /* SavedSpotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAF65A32C1BFE22006BEFA0 /* SavedSpotsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		3AAF65952C18AEE6006BEFA0 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3AAF65972C18CA44006BEFA0 /* TourApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourApiManager.swift; sourceTree = "<group>"; };
 		3AAF659F2C18D20E006BEFA0 /* TouristSpotTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristSpotTableViewCell.swift; sourceTree = "<group>"; };
+		3AAF65A12C1BE3D8006BEFA0 /* TouristSpotDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristSpotDetailViewController.swift; sourceTree = "<group>"; };
+		3AAF65A32C1BFE22006BEFA0 /* SavedSpotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSpotsViewController.swift; sourceTree = "<group>"; };
 		CCD1C7E791D730A67F72E065 /* Pods-tourCheck-1971322-jangsubin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tourCheck-1971322-jangsubin.debug.xcconfig"; path = "Target Support Files/Pods-tourCheck-1971322-jangsubin/Pods-tourCheck-1971322-jangsubin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +99,9 @@
 				3A9874642C18A2F6006D5B37 /* MapViewController.swift */,
 				3AAF65952C18AEE6006BEFA0 /* SearchViewController.swift */,
 				3AAF65972C18CA44006BEFA0 /* TourApiManager.swift */,
+				3AAF65A12C1BE3D8006BEFA0 /* TouristSpotDetailViewController.swift */,
 				3AAF659F2C18D20E006BEFA0 /* TouristSpotTableViewCell.swift */,
+				3AAF65A32C1BFE22006BEFA0 /* SavedSpotsViewController.swift */,
 			);
 			path = "tourCheck-1971322-jangsubin";
 			sourceTree = "<group>";
@@ -243,10 +249,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AAF65A42C1BFE22006BEFA0 /* SavedSpotsViewController.swift in Sources */,
 				3AAF65962C18AEE6006BEFA0 /* SearchViewController.swift in Sources */,
 				3A9874472C169143006D5B37 /* AuthViewController.swift in Sources */,
 				3A98742F2C168114006D5B37 /* ViewController.swift in Sources */,
 				3A98742B2C168114006D5B37 /* AppDelegate.swift in Sources */,
+				3AAF65A22C1BE3D8006BEFA0 /* TouristSpotDetailViewController.swift in Sources */,
 				3AAF65A02C18D20E006BEFA0 /* TouristSpotTableViewCell.swift in Sources */,
 				3A9874652C18A2F6006D5B37 /* MapViewController.swift in Sources */,
 				3A98742D2C168114006D5B37 /* SceneDelegate.swift in Sources */,

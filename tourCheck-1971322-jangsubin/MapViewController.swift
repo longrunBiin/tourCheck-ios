@@ -2,71 +2,116 @@ import UIKit
 import NMapsMap
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, NMFMapViewTouchDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, NMFMapViewTouchDelegate, NMFMapViewCameraDelegate {
 
     var locationManager = CLLocationManager()
     var naverMapView: NMFNaverMapView!
     var naverMap: NMFMapView!
+    var currentLocation: CLLocation?
+    var markers: [NMFMarker] = []
+    var touristSpots: [TouristSpot] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         naverMapView = NMFNaverMapView(frame: view.frame)
         naverMapView.showLocationButton = true
-    
         view.addSubview(naverMapView)
-
 
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
 
-        // NMFMapView 객체 가져오기 및 터치 델리게이트 설정
         naverMap = naverMapView.mapView
         naverMap.touchDelegate = self
-        
+        naverMap.addCameraDelegate(delegate: self)
     }
 
-    // 위치 업데이트 시 호출되는 메서드
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
+        currentLocation = location
         print("현재 위치: \(location.coordinate.latitude), \(location.coordinate.longitude)")
 
-        // 현 위치로 카메라 이동
         let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude))
         cameraUpdate.animation = .easeIn
         naverMap.moveCamera(cameraUpdate)
 
-        // 위치 업데이트 멈춤 (한번만 이동하도록)
         locationManager.stopUpdatingLocation()
-        
+
+        fetchTouristSpotsAndAddMarkers()
     }
 
-    // 위치 접근 권한 상태가 변경될 때 호출되는 메서드
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
             locationManager.startUpdatingLocation()
         case .denied, .restricted:
-            // 권한이 거부된 경우 처리
             print("위치 서비스 권한이 거부되었습니다. 설정에서 권한을 허용해주세요.")
         default:
             break
         }
     }
 
-    // 위치 업데이트 실패 시 호출되는 메서드
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
     }
 
-    // 지도 터치 이벤트 처리
-    func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
-        print("Map tapped at: \(latlng.lat), \(latlng.lng)")
+    func fetchTouristSpotsAndAddMarkers() {
+        guard let location = currentLocation else { return }
 
-        // 마커 생성 및 지도에 추가
-        let marker = NMFMarker(position: latlng)
-        marker.mapView = mapView
+        TourAPIManager.shared.fetchTouristSpotsNearby(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) { spots in
+            guard let spots = spots else { return }
+            DispatchQueue.main.async {
+                self.clearMarkers()
+                self.touristSpots = spots
+                self.addMarkers(for: spots)
+            }
+        }
+    }
+
+    func clearMarkers() {
+        markers.forEach { $0.mapView = nil }
+        markers.removeAll()
+    }
+
+    func addMarkers(for spots: [TouristSpot]) {
+        spots.forEach { spot in
+            let marker = NMFMarker()
+            marker.position = NMGLatLng(lat: Double(spot.mapy) ?? 0.0, lng: Double(spot.mapx) ?? 0.0)
+            marker.captionText = spot.title
+            marker.iconTintColor = UIColor.purple // 마커 색상 변경
+            marker.mapView = self.naverMap
+            marker.touchHandler = { (overlay) -> Bool in
+                self.showDetailForSpot(spot)
+                return true
+            }
+            markers.append(marker)
+        }
+    }
+
+    func showDetailForSpot(_ spot: TouristSpot) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let detailVC = storyboard.instantiateViewController(withIdentifier: "TouristSpotDetailViewController") as? TouristSpotDetailViewController {
+            detailVC.contentId = spot.contentid
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+
+    // 카메라 이동 이벤트 처리
+    func mapViewCameraIdle(_ mapView: NMFMapView) {
+        let center = mapView.cameraPosition.target
+        fetchTouristSpotsAndAddMarkersAt(latitude: center.lat, longitude: center.lng)
+    }
+
+    func fetchTouristSpotsAndAddMarkersAt(latitude: Double, longitude: Double) {
+        TourAPIManager.shared.fetchTouristSpotsNearby(latitude: latitude, longitude: longitude) { spots in
+            guard let spots = spots else { return }
+            DispatchQueue.main.async {
+                self.clearMarkers()
+                self.touristSpots = spots
+                self.addMarkers(for: spots)
+            }
+        }
     }
 }
