@@ -1,5 +1,4 @@
 import UIKit
-import Foundation
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
@@ -9,6 +8,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
@@ -21,6 +21,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TouristSpotCell", for: indexPath) as! TouristSpotTableViewCell
         let spot = touristSpots[indexPath.row]
+        
         cell.titleLabel.text = spot.title
         cell.addressLabel.text = spot.addr1
         if let imageUrl = spot.firstimage, let url = URL(string: imageUrl) {
@@ -32,14 +33,25 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }.resume()
         } else {
-            cell.spotImageView.image = nil  // 이미지가 없을 경우 이미지를 설정하지 않음
+            cell.spotImageView.image = UIImage(named: "placeholder")
         }
+
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let spot = touristSpots[indexPath.row]
+        performSegue(withIdentifier: "showDetailFromSearch", sender: spot)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        guard let keyword = searchBar.text, !keyword.isEmpty else { return }
+        fetchSpots(keyword: keyword)
+    }
+
     func fetchSpots(keyword: String) {
-        TourAPIManager.shared.fetchTouristSpots(keyword: keyword) { [weak self] spots in
-            guard let self = self else { return }
+        TourAPIManager.shared.fetchTouristSpots(keyword: keyword) { spots in
             DispatchQueue.main.async {
                 self.touristSpots = spots ?? []
                 self.tableView.reloadData()
@@ -47,12 +59,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let keyword = searchBar.text, !keyword.isEmpty {
-            fetchSpots(keyword: keyword)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailFromSearch",
+           let detailVC = segue.destination as? TouristSpotDetailViewController,
+           let spot = sender as? TouristSpot {
+            detailVC.contentId = spot.contentid
         }
-        searchBar.resignFirstResponder()
     }
-
-
 }

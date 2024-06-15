@@ -16,24 +16,30 @@ class AuthViewController: UIViewController {
 
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
-        print("Login button tapped")
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (authResult, error) in
-            guard let self = self else { return }
-            if let error = error {
-                print("Login error: \(error.localizedDescription)")
-                return
+                print("Login button tapped")
+                Auth.auth().signIn(withEmail: email, password: password) { [weak self] (authResult, error) in
+                    guard let self = self else { return }
+                    if let error = error {
+                        print("Login error: \(error.localizedDescription)")
+                        return
+                    }
+                    print("Login successful")
+                    self.transitionToMainScreen()
+                }
             }
-            print("Login successful")
-            // 로그인 성공 시 Segue 호출 (중복 방지)
-            if !self.isPerformingSegue {
-                self.isPerformingSegue = true
-                print("Performing segue from login")
-                self.performSegue(withIdentifier: "goToMain", sender: sender)
-            } else {
-                print("Segue already performing from login")
+            
+    func transitionToMainScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+               if let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? UITabBarController {
+                   if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                      let sceneDelegate = windowScene.delegate as? SceneDelegate,
+                      let window = sceneDelegate.window {
+                       window.rootViewController = mainTabBarController
+                       UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromRight, animations: nil)
+                   }
             }
         }
-    }
+        
 
     @IBAction func signupButtonTapped(_ sender: UIButton) {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }

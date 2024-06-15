@@ -1,29 +1,80 @@
-//
-//  SavedSpotsViewController.swift
-//  tourCheck-1971322-jangsubin
-//
-//  Created by 장수빈 on 6/14/24.
-//
-
 import UIKit
+import Firebase
 
-class SavedSpotsViewController: UIViewController {
+class SavedSpotsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var savedSpotsTableView: UITableView!
+
+    var savedSpots: [TouristSpot] = []
+    var listener: ListenerRegistration?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        savedSpotsTableView.delegate = self
+        savedSpotsTableView.dataSource = self
+        
+        startListeningForSavedSpots()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    deinit {
+        listener?.remove()
     }
-    */
 
+    func startListeningForSavedSpots() {
+        guard let user = Auth.auth().currentUser, let email = user.email else { return }
+        
+        let db = Firestore.firestore()
+        listener = db.collection("users").document(email).collection("savedSpots").addSnapshotListener { snapshot, error in
+            if let error = error {
+                print("Error fetching saved spots: \(error)")
+                return
+            }
+            
+            self.savedSpots = snapshot?.documents.compactMap { document -> TouristSpot? in
+                let data = document.data()
+                let title = data["title"] as? String ?? "No Title"
+                let address = data["address"] as? String ?? "No Address"
+                let detailedAddress = data["detailedAddress"] as? String ?? ""
+                let imageUrl = data["imageUrl"] as? String ?? ""
+                let description = data["description"] as? String ?? ""
+                let mapx = data["mapx"] as? String ?? ""
+                let mapy = data["mapy"] as? String ?? ""
+                
+                return TouristSpot(title: title, addr1: address, addr2: detailedAddress, firstimage: imageUrl, contentid: description, mapx: mapx, mapy: mapy)
+            } ?? []
+            
+            self.savedSpotsTableView.reloadData()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return savedSpots.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SavedSpotCell", for: indexPath) as! SavedSpotTableViewCell
+        let spot = savedSpots[indexPath.row]
+        
+        cell.titleLabel.text = spot.title
+        cell.addressLabel.text = spot.addr1
+        if let imageUrl = spot.firstimage, let url = URL(string: imageUrl) {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        cell.spotImageView.image = UIImage(data: data)
+                    }
+                }
+            }.resume()
+        } else {
+            cell.spotImageView.image = UIImage(named: "placeholder")
+        }
+        
+        return cell
+    }
+}
+
+class SavedSpotTableViewCell: UITableViewCell {
+    @IBOutlet weak var spotImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
 }

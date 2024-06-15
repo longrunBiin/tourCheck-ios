@@ -90,14 +90,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, NMFMapView
         }
     }
 
+
     func showDetailForSpot(_ spot: TouristSpot) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let detailVC = storyboard.instantiateViewController(withIdentifier: "TouristSpotDetailViewController") as? TouristSpotDetailViewController {
-            detailVC.contentId = spot.contentid
-            self.navigationController?.pushViewController(detailVC, animated: true)
-        }
+        performSegue(withIdentifier: "showDetail", sender: spot)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail",
+           let detailVC = segue.destination as? TouristSpotDetailViewController,
+           let spot = sender as? TouristSpot {
+            detailVC.contentId = spot.contentid
+        }
+    }
     // 카메라 이동 이벤트 처리
     func mapViewCameraIdle(_ mapView: NMFMapView) {
         let center = mapView.cameraPosition.target
