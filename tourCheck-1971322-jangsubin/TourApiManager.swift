@@ -220,4 +220,6 @@ struct TouristSpotDetail: Codable {
     let addr2: String?
     let firstimage: String?
     let overview: String? // 설명 필드
+    let mapx: String? // 추가
+    let mapy: String?
 }

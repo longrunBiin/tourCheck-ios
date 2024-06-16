@@ -39,8 +39,9 @@ class SavedSpotsViewController: UIViewController, UITableViewDelegate, UITableVi
                 let description = data["description"] as? String ?? ""
                 let mapx = data["mapx"] as? String ?? ""
                 let mapy = data["mapy"] as? String ?? ""
-                
-                return TouristSpot(title: title, addr1: address, addr2: detailedAddress, firstimage: imageUrl, contentid: description, mapx: mapx, mapy: mapy)
+                let contentid = data["contentid"] as? String ?? ""
+
+                return TouristSpot(title: title, addr1: address, addr2: detailedAddress, firstimage: imageUrl, contentid: contentid, mapx: mapx, mapy: mapy)
             } ?? []
             
             self.savedSpotsTableView.reloadData()
@@ -70,6 +71,20 @@ class SavedSpotsViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let spot = savedSpots[indexPath.row]
+        performSegue(withIdentifier: "showTouristSpotDetail", sender: spot)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showTouristSpotDetail" {
+            if let detailVC = segue.destination as? TouristSpotDetailViewController, let spot = sender as? TouristSpot {
+                detailVC.contentId = spot.contentid
+                detailVC.isSaved = true
+            }
+        }
     }
 }
 
